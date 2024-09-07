@@ -16,7 +16,8 @@ export const addBill = async (req, res) => {
 
 // Get all Bills
 export const getAllBills = async (req, res) => {
-  const bills = await Bill.find({});
+  const bills = await Bill.find();
+  console.log(bills);
   if (!bills) {
     return res.status(500).json({ message: "Something went wrong" });
   }
