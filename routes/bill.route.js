@@ -12,6 +12,6 @@ const router = express.Router();
 router.post("/add", authenticateToken, addBill);
 router.get("/all", authenticateToken, getAllBills);
 router.get("/bill/:id", authenticateToken, getBill);
-router.put("/update/:id", authenticateToken, updateBill);
+router.post("/update/:id", authenticateToken, updateBill);
 
 export default router;

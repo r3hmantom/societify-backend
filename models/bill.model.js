@@ -14,7 +14,7 @@ const billSchema = new Schema({
     type: String,
     required: true,
   },
-  satisfied: {
+  status: {
     type: Boolean,
     default: false,
   },
