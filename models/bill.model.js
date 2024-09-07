@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const billSchema = new mongoose.Schema({
-    // Define your bill schema fields here
-    // For example:
+    
     amount: {
         type: Number,
         required: true
