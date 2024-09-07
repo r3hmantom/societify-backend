@@ -9,7 +9,7 @@ import authenticateToken from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/add", authenticateToken, addBill);
+router.post("/add", addBill);
 router.get("/all", getAllBills);
 router.get("/bill/:id", authenticateToken, getBill);
 router.post("/update/:id", authenticateToken, updateBill);

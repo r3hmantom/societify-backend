@@ -3,7 +3,7 @@ import { Schema } from "mongoose";
 
 const billSchema = new Schema({
   amount: {
-    type: Number,
+    type: String,
     required: true,
   },
   description: {
