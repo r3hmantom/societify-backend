@@ -2,6 +2,7 @@
 import bcrypt from "bcrypt";
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+import billModel from "../models/bill.model.js";
 
 // Define the controller functions
 export const createUser = async (req, res) => {
@@ -91,5 +92,9 @@ export const getUsers = async (req, res) => {
 // Me
 export const me = async (req, res) => {
   const user = await User.findById(req.user._id).select("-password");
-  return res.status(200).json(user);
+  const bills = await billModel.find({ email: user.email });
+  return res.status(200).json({
+    user,
+    bills,
+  });
 };

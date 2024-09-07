@@ -1,10 +1,11 @@
 import Bill from "../models/bill.model.js";
 export const addBill = async (req, res) => {
-  const { amount, description, email } = req.body;
+  const { amount, description, email, type } = req.body;
   const newBill = await Bill.create({
     amount,
     description,
     email,
+    type,
     status: false,
   });
   if (!newBill) {
@@ -35,10 +36,10 @@ export const getBill = async (req, res) => {
 // UPdate the bill
 export const updateBill = async (req, res) => {
   const { id } = req.params;
-  const { amount, description, email, status } = req.body;
+  const { amount, description, type, email, status } = req.body;
   const updatedBill = await Bill.findByIdAndUpdate(
     id,
-    { amount, description, status },
+    { amount, description, type, email, status },
     { new: true }
   );
   if (!updatedBill) {

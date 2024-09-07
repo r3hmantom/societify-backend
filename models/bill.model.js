@@ -18,6 +18,11 @@ const billSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  type: {
+    type: String,
+    enum: ["electricity", "water", "internet", "other"],
+    required: true,
+  },
 });
 
 export default mongoose.model("Bill", billSchema);
