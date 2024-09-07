@@ -16,6 +16,6 @@ router.get("/logout", (req, res) => {
   res.clearCookie("token").json({ message: "Logged out" });
 });
 router.get("/me", authenticateToken, me);
-router.get("/me/bills", authenticateToken, getMyBills);
+router.get("/me/bills", getMyBills);
 
 export default router;
