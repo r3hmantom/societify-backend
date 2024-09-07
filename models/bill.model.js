@@ -10,8 +10,14 @@ const billSchema = new Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  satisfied: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const Bill = mongoose.model("Bill", billSchema);
-
-export default Bill;
+export default mongoose.model("Bill", billSchema);

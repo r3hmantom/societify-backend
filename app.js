@@ -3,6 +3,7 @@ import { configDotenv } from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.route.js";
+import billRouter from "./routes/bill.route.js";
 import cors from "cors";
 
 configDotenv();
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(cookieParser());
 // use router
 app.use("/users", userRouter);
+app.use("/bills", billRouter);
 
 // For JWT authentication
 app.use(express.urlencoded({ extended: true }));

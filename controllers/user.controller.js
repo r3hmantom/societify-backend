@@ -30,7 +30,18 @@ export const createUser = async (req, res) => {
     return res.status(500).json({ message: "Something went wrong" });
   }
 
-  return res.status(201).json(newUser);
+  // Sign the JWT token and send it in the response
+  const token = jwt.sign(
+    { email: newUser.email, role: newUser.role, _id: newUser._id },
+    process.env.JWT_SECRET
+  );
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+  });
+
+  return res.status(201).json({ message: "User created" });
 };
 
 export const loginUser = async (req, res) => {
@@ -61,6 +72,12 @@ export const loginUser = async (req, res) => {
   });
 
   return res.status(200).json({ message: "Login successful" });
+};
+
+// Get All Users
+export const getUsers = async (req, res) => {
+  const users = await User.find().select("-password");
+  return res.status(200).json(users);
 };
 
 // Me

@@ -7,6 +7,9 @@ const router = express.Router();
 // GET /users
 router.post("/register", createUser);
 router.post("/login", loginUser);
+router.get("/logout", (req, res) => {
+  res.clearCookie("token").json({ message: "Logged out" });
+});
 router.get("/me", authenticateToken, me);
 
 export default router;
