@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
@@ -9,6 +11,9 @@ const authenticateToken = (req, res, next) => {
       return res.status(403).json({ message: "Forbidden" });
     }
     req.user = user;
+    console.log(user);
     next();
   });
 };
+
+export default authenticateToken;

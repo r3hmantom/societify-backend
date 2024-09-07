@@ -1,21 +1,17 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
-const billSchema = new mongoose.Schema({
-    
-    amount: {
-        type: Number,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    // Add more fields as needed
-
-    // Timestamps for createdAt and updatedAt
-    timestamps: true
+const billSchema = new Schema({
+  amount: {
+    type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
 });
 
-const Bill = mongoose.model('Bill', billSchema);
+const Bill = mongoose.model("Bill", billSchema);
 
-module.exports = Bill;
+export default Bill;
