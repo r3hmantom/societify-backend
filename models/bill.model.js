@@ -18,6 +18,10 @@ const billSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  dueDate: {
+    type: Date,
+    default: Date.now(),
+  },
   type: {
     type: String,
     enum: ["electricity", "water", "internet", "other"],
