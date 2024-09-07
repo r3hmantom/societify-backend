@@ -5,6 +5,7 @@ export const addBill = async (req, res) => {
     amount,
     description,
     email,
+    status: false,
   });
   if (!newBill) {
     return res.status(500).json({ message: "Something went wrong" });
@@ -34,7 +35,7 @@ export const getBill = async (req, res) => {
 // UPdate the bill
 export const updateBill = async (req, res) => {
   const { id } = req.params;
-  const { amount, description, status } = req.body;
+  const { amount, description, email, status } = req.body;
   const updatedBill = await Bill.findByIdAndUpdate(
     id,
     { amount, description, status },
