@@ -1,5 +1,10 @@
 import express from "express";
-import { createUser, loginUser, me } from "../controllers/user.controller.js";
+import {
+  createUser,
+  getMyBills,
+  loginUser,
+  me,
+} from "../controllers/user.controller.js";
 import authenticateToken from "../middlewares/auth.js";
 
 const router = express.Router();
@@ -11,5 +16,6 @@ router.get("/logout", (req, res) => {
   res.clearCookie("token").json({ message: "Logged out" });
 });
 router.get("/me", authenticateToken, me);
+router.get("/me/bills", getMyBills);
 
 export default router;

@@ -98,3 +98,11 @@ export const me = async (req, res) => {
     bills,
   });
 };
+
+// Get my Bills
+export const getMyBills = async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  const bills = await billModel.find({ email: user.email });
+  return res.status(200).json(bills);
+};
